@@ -1,0 +1,31 @@
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="resources/css/login.css">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <title><?=$lang['signin'];?></title>
+</head>
+
+<body>
+  <div class="main">
+    <p class="sign" align="center" ><?=$lang['signin'];?></p>
+    <form class="form1" method="post" action="?page=sign_in">
+      <select class="lang" onchange="location = this.value;">
+        
+        <option value="?page=login&lang=en" <?php echo $_GET['lang'] == 'en' ?  'selected' : '' ?> >English</option>
+        <option value="?page=login&lang=ru" <?php echo $_GET['lang'] == 'ru' ?  'selected' : '' ?> >Russian</option>
+     </select>
+      <input class="un " name="email" type="text" align="center" placeholder="Email">
+      <input class="pass" type="password" align="center" placeholder="<?=$lang['password'];?>">
+      <input type="submit" class="submit" align="center" value="<?=$lang['signin'];?>">
+      <p class="forgot" align="center"><a href="?page=registration"><?=$lang['signup'];?></p>
+            
+      </form>
+
+    </div>
+     
+</body>
+
+</html>

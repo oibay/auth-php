@@ -1,0 +1,31 @@
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="resources/css/login.css">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <title><?=$lang['signup'];?></title>
+</head>
+
+<body style="background: crimson;">
+  <div class="main" style="height: 480px;">
+    <p class="sign" align="center"><?=$lang['signup'];?></p>
+    <form name="reg" class="form1" method="post" action="?page=sign_up" onsubmit="return validateForm()">
+      <select class="lang" onchange="location = this.value;">
+        <option value="?page=registration&lang=en" <?php echo $_GET['lang'] == 'en' ?  'selected' : '' ?> >English</option>
+        <option value="?page=registration&lang=ru" <?php echo $_GET['lang'] == 'ru' ?  'selected' : '' ?> >Russian</option>
+     </select>
+      <input class="un " name="name" type="text" align="center" placeholder="<?=$lang['name'];?>">
+      <input class="un " name="email" type="email" align="center" placeholder="Email ">
+      <input class="pass" name="password" type="password" align="center" placeholder="<?=$lang['password'];?>">
+      <input type="submit" class="submit"  value="<?=$lang['signup'];?>">
+      <p class="forgot" align="center"><a href="?page=login"><?=$lang['signin'];?></p>
+            
+                
+    </div>
+     
+</body>
+<script src="resources/js/validation.js" type="text/javascript"></script>
+
+</html>

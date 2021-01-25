@@ -1,0 +1,48 @@
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="resources/css/login.css">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <title>Sign Up</title>
+</head>
+<style>
+img{
+   width: 150px;
+   height: 150px;
+   border-radius: 100%;
+   margin: 2em auto;
+   display: flex;
+
+}
+form {
+    margin:2em;
+}
+</style>
+<body style="background-color: rgb(235, 98, 166);">
+  <div class="main" style="width: 500px;height:550px;">
+    
+    <p class="sign" align="center" > <?=$lang['welcome']?> <?=$user['name'];?></p>
+    <img src="<?php echo $user['image'] ? $user['image'] :  'resources/images/nophoto.jpg';?>" alt="">
+    <form  method = "post" enctype = 'multipart/form-data' action="?upload=image" align="center">
+      <select class="lang" style="width: 200px;" onchange="location = this.value;">
+        
+        <option value="?page=login&lang=en" <?php echo $_GET['lang'] == 'en' ?  'selected' : '' ?> >English</option>
+        <option value="?page=login&lang=ru" <?php echo $_GET['lang'] == 'ru' ?  'selected' : '' ?> >Russian</option>
+     </select>
+        <input type = "file" name = "upload" />
+        <input type = "submit" name="submit" value = "<?=$lang['photo']?>" />
+    </form> 
+           
+    <p align="center"><?=$lang['email']?>: <?=$user['email'];?></p>
+    <button id="logout" class="submit" align="center" style="position: relative;top:3em;"><?=$lang['logout']?> </button>
+  </div>
+     
+</body>
+<script>
+    document.getElementById('logout').onclick = function(){
+       window.location.href="?logout=1"
+    }
+</script>
+</html>

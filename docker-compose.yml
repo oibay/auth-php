@@ -1,0 +1,40 @@
+version: '3'
+services:
+  userauth-database:
+    restart: always
+    build:
+      context: ./userAuth/docker/development
+      dockerfile: database.docker
+    environment:
+      - MYSQL_DATABASE=mydb
+      - MYSQL_USER=myuser
+      - MYSQL_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=docker
+    volumes:
+        - ./userAuth/docker/development/userAuth.sql:/docker-entrypoint-initdb.d/userAuth.sql  
+  userauth-nginx:
+    build:
+      context: ./userAuth/docker/development
+      dockerfile: nginx.docker
+    volumes:
+    - ./userauth:/app
+    depends_on:
+      - userauth-php-fpm
+    ports:
+    - "8080:80"
+  userauth-php-fpm:
+    build:
+      context: ./userAuth/docker/development
+      dockerfile: php-fpm.docker
+    environment:
+      APP_DEBUG: 1
+    volumes:
+    - ./userauth:/app
+  userauth-php-cli:
+    build:
+      context: ./userAuth/docker/development
+      dockerfile: php-cli.docker
+    environment:
+      APP_DEBUG: 1
+    volumes:
+    - ./userauth:/app
